@@ -1,0 +1,1 @@
+rootProject.name = "TicketEase_new"
