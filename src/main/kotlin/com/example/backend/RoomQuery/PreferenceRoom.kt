@@ -42,7 +42,7 @@ class PreferenceRoom{
         place.join(placeTime, JoinType.INNER, place.id, placeTime.placeId)
             .join(event, JoinType.INNER, placeTime.id, event.placeTimeId, additionalConstraint = {
                 event.organizerId inList listOrganizerId; event.genre inList genreList
-                event.status eq StatusEvent.CREATED.toString() })
+                event.status eq StatusEvent.CREATE.toString() })
             .join(ticket, JoinType.INNER, event.id, ticket.eventId)
             .slice(event.id,event.name, ticket.price, place.location, placeTime.date)
             .selectAll().withDistinct(true).map(::toCatalogEntity)

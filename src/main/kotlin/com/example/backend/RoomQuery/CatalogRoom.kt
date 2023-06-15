@@ -32,7 +32,7 @@ class CatalogRoom {
         val listOrganizerId : List<Long> = organizerService.selectOrganizerByCity(city)
         place.join(placeTime,JoinType.INNER,place.id,placeTime.placeId)
             .join(event, JoinType.INNER,placeTime.id,event.placeTimeId, additionalConstraint = {
-                event.organizerId inList listOrganizerId;event.status eq StatusEvent.CREATED.toString()})
+                event.organizerId inList listOrganizerId;event.status eq StatusEvent.CREATE.toString()})
             .join(ticket,JoinType.LEFT,event.id,ticket.eventId)
             .slice(event.id,event.name,ticket.price,place.location,placeTime.date)
             .selectAll().withDistinct(true).map(::toCatalogEntity)

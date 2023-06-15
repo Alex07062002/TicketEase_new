@@ -1,7 +1,7 @@
 package com.example.DataClasses.Event
 
 enum class StatusEvent(val status : String){
-    CREATED("Создано"),
+    CREATE("Создано"),
     ISGONE("Проведено"),
     DELETE("Отменено")
 }
